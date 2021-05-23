@@ -25,16 +25,17 @@ for item in arr[:,1]:
 # Goes through and counts each pokemon type
 for item in list_types:
     
-    print(item, (arr[:,1] == item).sum())
+    print(f"There are {(arr[:,1] == item).sum()} {item} pokemon\n")
 
 # Finds the highest and lowest health of a pokemon
 max = (arr[:,2]).max()
 min = (arr[:,2]).min()
 
 # Prints the results
-print(f"The highest health of a pokemon is {max}")
-print(f"The lowest health of a pokemon is {min}")
+print(f"The highest health of a pokemon is {max}\n")
+print(f"The lowest health of a pokemon is {min}\n")
 
 # Prints the name of the best pokemon
 print("The best pokemon is Mewtwo")
+
 
