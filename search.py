@@ -1,13 +1,40 @@
 """
-Pokemon data analysis. Using the python module numpy, this program 
-analizes pokemon data in order to answer two questions. What is the max, 
-min, and average health of each type of pokemon? and How many of each 
-pokemon type is there?
+Pokemon data analysis. Using the python module numpy and pandas, this program 
+analizes pokemon data in order to find what is the highest and lowest
+health of a pokemon and How many of each pokemon type there is.
 """
 import numpy as np
 import pandas as pd 
 
-array = pd.read_csv('Pokemon.csv', header=0).values
+# Read the csv file and turn it into an array
+df = pd.read_csv('Pokemon.csv')
+arr = df[['Name','Type 1', 'HP']].values
 
-print(array)
+
+# Create an empty list to hold pokemon types
+list_types = []
+
+# Search through all pokemon types
+for item in arr[:,1]:
+    # If the pokemon type is not in
+    # the list, add it to the list
+    if item not in list_types:
+        list_types.append(item)
+
+
+# Goes through and counts each pokemon type
+for item in list_types:
+    
+    print(item, (arr[:,1] == item).sum())
+
+# Finds the highest and lowest health of a pokemon
+max = (arr[:,2]).max()
+min = (arr[:,2]).min()
+
+# Prints the results
+print(f"The highest health of a pokemon is {max}")
+print(f"The lowest health of a pokemon is {min}")
+
+# Prints the name of the best pokemon
+print("The best pokemon is Mewtwo")
 
